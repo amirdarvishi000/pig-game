@@ -4,6 +4,7 @@ let total = 0,
   current2 = 0,
   userState = 1;
 let playing = true;
+document.querySelector('.dice').classList.add('hidden');
 const roll = document.querySelector('.btn--roll');
 const dice = document.querySelector('.dice');
 const score1El = document.getElementById('score--0');
@@ -29,6 +30,8 @@ function gameFinished() {
 }
 roll.addEventListener('click', function () {
   if (playing) {
+    document.querySelector('.dice').classList.remove('hidden');
+
     let randNum = Math.trunc(Math.random() * 6) + 1;
     dice.src = `dice-${randNum}.png`;
     total += randNum;
@@ -80,8 +83,7 @@ function newGameFn() {
   score2El.textContent = total;
   current1El.textContent = current1;
   current2El.textContent = current2;
-
-  document.querySelector('.dice').classList.remove('hidden');
+  document.querySelector('.dice').classList.add('hidden');
   document.querySelectorAll('.player')[0].classList.remove('player--winner');
   document.querySelectorAll('.player')[1].classList.remove('player--winner');
 }
